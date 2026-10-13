@@ -1,0 +1,371 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:hwc="clr-namespace:HCAD_Utilities_CMS.WebCMS.CMS_Actions;assembly=HCAD_Utilities.CMS" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ucas="clr-namespace:UiPath.Core.Activities.Storage;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>818.4,454.4</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="100">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>HCAD_Utilities_CMS.WebCMS.CMS_Actions</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Platform</x:String>
+      <x:String>UiPath.Core.Activities.Storage</x:String>
+      <x:String>UiPath.Core.Activities.Orchestrator</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="80">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>HCAD_Utilities.CMS</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DataService.Activities.Core</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.CodedWorkflows</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="870.6666666666666,5730" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="586,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder with RBAE ID" sap:VirtualizedContainerService.HintSize="586,124" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[in_Config(&quot;LocalFolder&quot;).ToString.Replace(&quot;{username}&quot;, Environment.UserName)+&quot;\&quot;+in_TransactionItem.SpecificContent(&quot;RBAENumber&quot;).ToString]" />
+    <Assign DisplayName="Create ScreenshotFolder" sap:VirtualizedContainerService.HintSize="586,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Object">[in_Config("ScreenShotFolder")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Object">[in_Config("LocalFolder").ToString.Replace("{username}", Environment.UserName)+"\"+in_TransactionItem.SpecificContent("RBAENumber").ToString+"\Screenshot"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder with ScreenshotRBAE ID" sap:VirtualizedContainerService.HintSize="586,124" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[in_Config(&quot;ScreenShotFolder&quot;).ToString]" />
+    <hwc:WebCMS_SearchCauseNumber DisplayName="WebCMS_SearchCasesNumber" sap:VirtualizedContainerService.HintSize="586,57.333333333333336" sap2010:WorkflowViewState.IdRef="WebCMS_SearchCauseNumber_1" in_CauseNumber="RBAE020937" in_LowTimeoutSec="[Cint(in_Config(&quot;CMSTimeout_2&quot;).ToString)]" in_ScreenshotFolder="[in_Config(&quot;ScreenShotFolder&quot;).ToString]" in_TimeoutSecs="[Cint(in_Config(&quot;CMSTimeout_1&quot;).ToString)]" in_VerificationSec="[Cint(in_Config(&quot;CMSTimeout_3&quot;).ToString)]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </hwc:WebCMS_SearchCauseNumber>
+    <hwc:WebCMS_OpenCauseNumber DisplayName="WebCMS_OpenCauseNo" sap:VirtualizedContainerService.HintSize="586,57.333333333333336" sap2010:WorkflowViewState.IdRef="WebCMS_OpenCauseNumber_1" in_ScreenshotFolder="[in_Config(&quot;ScreenShotFolder&quot;).ToString]" in_TimeoutSecs="[Cint(in_Config(&quot;CMSTimeout_1&quot;).ToString)]" in_Verificationsec="[Cint(in_Config(&quot;CMSTimeout_3&quot;).ToString)]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </hwc:WebCMS_OpenCauseNumber>
+    <hwc:WebCMS_AssignArbitrator DisplayName="WebCMS_AssignArbitratorForCaseID" sap:VirtualizedContainerService.HintSize="586,57.333333333333336" sap2010:WorkflowViewState.IdRef="WebCMS_AssignArbitrator_2" in_ArbitratorName="[in_TransactionItem.SpecificContent(&quot;ArbitratorName&quot;).ToString]" in_LowTimeoutSec="[Cint(in_Config(&quot;CMSTimeout_2&quot;).ToString)]" in_ScreenshotFolder="[in_Config(&quot;ScreenShotFolder&quot;).ToString]" in_TimeoutSec="[Cint(in_Config(&quot;CMSTimeout_1&quot;).ToString)]" in_VerificationSec="[Cint(in_Config(&quot;CMSTimeout_3&quot;).ToString)]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </hwc:WebCMS_AssignArbitrator>
+    <hwc:WebCMS_CreateDocumentFolders DisplayName="WebCMS_CreateDocumentFoldersNOH" sap:VirtualizedContainerService.HintSize="586,57.333333333333336" sap2010:WorkflowViewState.IdRef="WebCMS_CreateDocumentFolders_1" in_LowTimeoutSec="[Cint(in_Config(&quot;CMSTimeout_3&quot;).ToString)]" in_ScreenshotFolder="[in_Config(&quot;ScreenShotFolder&quot;).ToString]" in_TimeoutSec="[Cint(in_Config(&quot;CMSTimeout_1&quot;).ToString)]" in_VerificationSec="[Cint(in_Config(&quot;CMSTimeout_3&quot;).ToString)]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </hwc:WebCMS_CreateDocumentFolders>
+    <Assign DisplayName="Assign 'Remove empty values'" sap:VirtualizedContainerService.HintSize="586,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Object">[in_TransactionItem.SpecificContent("NOHMailAttachment")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Object">[in_TransactionItem.SpecificContent("NOHMailAttachment").ToString().Split(","c, StringSplitOptions.RemoveEmptyEntries)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[in_TransactionItem.SpecificContent(&quot;NOHMailAttachment&quot;) IsNot Nothing AndAlso Not String.IsNullOrEmpty(in_TransactionItem.SpecificContent(&quot;NOHMailAttachment&quot;).ToString())]" DisplayName="If NOH file availabe" sap:VirtualizedContainerService.HintSize="586,1496.6666666666667" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="552,1097.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each currentText 'Upload Files into NOH'" sap:VirtualizedContainerService.HintSize="518,1037.3333333333333" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[DirectCast(in_TransactionItem.SpecificContent(&quot;NOHMailAttachment&quot;), String())]">
+            <ui:ForEach.Body>
+              <ActivityAction x:TypeArguments="x:String">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:String" Name="currentText" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="484,898.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope 'Download NOH File From Storage File'" sap:VirtualizedContainerService.HintSize="450,513.3333333333334" sap2010:WorkflowViewState.IdRef="RetryScope_4" NumberOfRetries="[Cint(in_Config(&quot;MaxRetryNumber&quot;).ToString)]">
+                    <ui:RetryScope.ActivityBody>
+                      <ActivityAction>
+                        <Sequence DisplayName="Action 'Download NOH File From Storage File'" sap:VirtualizedContainerService.HintSize="416,280" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ucas:DownloadStorageFile TimeoutMS="{x:Null}" Destination="[in_Config(&quot;LocalFolder&quot;).ToString.Replace(&quot;{username}&quot;, Environment.UserName)+&quot;\&quot;+in_TransactionItem.SpecificContent(&quot;RBAENumber&quot;).ToString+&quot;\&quot;+currentText]" DisplayName="Download NOH File From Storage File" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="382,220" sap2010:WorkflowViewState.IdRef="DownloadStorageFile_6" Path="[currentText]" StorageBucketName="[in_Config(&quot;StorageBucket_MailAttachments&quot;).ToString]" />
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:RetryScope.ActivityBody>
+                    <ui:RetryScope.Condition>
+                      <ActivityFunc x:TypeArguments="x:Boolean" />
+                    </ui:RetryScope.Condition>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:RetryScope>
+                  <hwc:WebCMS_UploadNOHFile DisplayName="WebCMS_UploadNOHFile int CMS" sap:VirtualizedContainerService.HintSize="450,325.3333333333333" sap2010:WorkflowViewState.IdRef="WebCMS_UploadNOHFile_3" in_AttachmentPath="[in_Config(&quot;LocalFolder&quot;).ToString.Replace(&quot;{username}&quot;, Environment.UserName)+&quot;\&quot;+in_TransactionItem.SpecificContent(&quot;RBAENumber&quot;).ToString+&quot;\&quot;+currentText]" in_LowTimeoutSec="[Cint(in_Config(&quot;CMSTimeout_3&quot;).ToString)]" in_ScreenshotFolder="[in_Config(&quot;ScreenShotFolder&quot;).ToString]" in_TimeoutSec="[Cint(in_Config(&quot;CMSTimeout_1&quot;).ToString)]" in_VerificationSec="[Cint(in_Config(&quot;CMSTimeout_4&quot;).ToString)]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </hwc:WebCMS_UploadNOHFile>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEach.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEach>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log no NOH files" sap:VirtualizedContainerService.HintSize="382,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;No NOH file to upload into CMS&quot;]" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <If Condition="[in_TransactionItem.SpecificContent(&quot;SchedulingRequestMail&quot;) IsNot Nothing AndAlso Not String.IsNullOrEmpty(in_TransactionItem.SpecificContent(&quot;SchedulingRequestMail&quot;).ToString())]" DisplayName="If MSG file availabe" sap:VirtualizedContainerService.HintSize="586,842" sap2010:WorkflowViewState.IdRef="If_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,442.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope 'Download Msg File from Storage File'" sap:VirtualizedContainerService.HintSize="382,57.333333333333336" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[Cint(in_Config(&quot;MaxRetryNumber&quot;).ToString)]">
+            <ui:RetryScope.ActivityBody>
+              <ActivityAction>
+                <Sequence DisplayName="Action 'Download Msg File from Storage File'" sap:VirtualizedContainerService.HintSize="416,280" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ucas:DownloadStorageFile TimeoutMS="{x:Null}" Destination="[in_Config(&quot;LocalFolder&quot;).ToString.Replace(&quot;{username}&quot;, Environment.UserName)+&quot;\&quot;+in_TransactionItem.SpecificContent(&quot;RBAENumber&quot;).ToString+&quot;\&quot;+in_TransactionItem.SpecificContent(&quot;SchedulingRequestMail&quot;).ToString()]" DisplayName="Download Msg File from Storage File" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="382,220" sap2010:WorkflowViewState.IdRef="DownloadStorageFile_3" Path="[in_TransactionItem.SpecificContent(&quot;SchedulingRequestMail&quot;).ToString()]" StorageBucketName="[in_Config(&quot;StorageBucket_MailAttachments&quot;).ToString]" />
+                </Sequence>
+              </ActivityAction>
+            </ui:RetryScope.ActivityBody>
+            <ui:RetryScope.Condition>
+              <ActivityFunc x:TypeArguments="x:Boolean" />
+            </ui:RetryScope.Condition>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:RetryScope>
+          <hwc:WebCMS_UploadCorrespondenceFile DisplayName="WebCMS_Upload Email Attachment" sap:VirtualizedContainerService.HintSize="382,325.3333333333333" sap2010:WorkflowViewState.IdRef="WebCMS_UploadCorrespondenceFile_1" in_CorrespondenceFilepath="[in_Config(&quot;LocalFolder&quot;).ToString.Replace(&quot;{username}&quot;, Environment.UserName)+&quot;\&quot;+in_TransactionItem.SpecificContent(&quot;RBAENumber&quot;).ToString+&quot;\&quot;+in_TransactionItem.SpecificContent(&quot;SchedulingRequestMail&quot;).ToString()]" in_LowTimeoutSec="[Cint(in_Config(&quot;CMSTimeout_3&quot;).ToString)]" in_ScreenshotFolder="[in_Config(&quot;ScreenShotFolder&quot;).ToString]" in_TimeoutSec="[Cint(in_Config(&quot;CMSTimeout_1&quot;).ToString)]" in_VerificationSec="[Cint(in_Config(&quot;CMSTimeout_4&quot;).ToString)]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </hwc:WebCMS_UploadCorrespondenceFile>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log no MSG files" sap:VirtualizedContainerService.HintSize="382,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;No MSG file to upload into CMS&quot;]" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <hwc:WebCMS_CreateCaseEvents DisplayName="WebCMS_Create Case Events" sap:VirtualizedContainerService.HintSize="586,650.6666666666666" sap2010:WorkflowViewState.IdRef="WebCMS_CreateCaseEvents_1" in_Descriptions="[If(    Not String.IsNullOrWhiteSpace(in_TransactionItem.SpecificContent(&quot;PhysicalAddress&quot;).ToString), &quot;PhysicalAddress: &quot; &amp; in_TransactionItem.SpecificContent(&quot;PhysicalAddress&quot;).ToString,&#xD;&#xA;    If(   Not String.IsNullOrWhiteSpace(in_TransactionItem.SpecificContent(&quot;HearingMeeting_link&quot;).ToString), &quot;HearingMeeting_link: &quot; &amp; in_TransactionItem.SpecificContent(&quot;HearingMeeting_link&quot;).ToString,&#xD;&#xA;        If(Not String.IsNullOrWhiteSpace(in_TransactionItem.SpecificContent(&quot;DialInNumber&quot;).ToString), &quot;DialInNumber: &quot; &amp; in_TransactionItem.SpecificContent(&quot;DialInNumber&quot;).ToString,            &quot;&quot;&#xD;&#xA;        )&#xD;&#xA;    )&#xD;&#xA;)]" in_EventFromDate="[CDate(in_TransactionItem.SpecificContent(&quot;HearingFromDate&quot;)).ToString(&quot;MM/dd/yyyy&quot;)]" in_EventFromTime="[DateTime.Parse(in_TransactionItem.SpecificContent(&quot;HearingFromTime&quot;).ToString).ToString(&quot;h:mm tt&quot;).ToLower()]" in_EventName="[in_TransactionItem.SpecificContent(&quot;HearingName&quot;).ToString]" in_EventToDate="[CDate(in_TransactionItem.SpecificContent(&quot;HearingToDate&quot;)).ToString(&quot;MM/dd/yyyy&quot;)]" in_EventToTime="[DateTime.Parse(in_TransactionItem.SpecificContent(&quot;HearingToTime&quot;).ToString).ToString(&quot;h:mm tt&quot;).ToLower()]" in_EventType="[in_TransactionItem.SpecificContent(&quot;HearingType&quot;).ToString]" in_LowTimeoutSec="[Cint(in_Config(&quot;CMSTimeout_3&quot;).ToString)]" in_ScreenshotFolder="[in_Config(&quot;ScreenShotFolder&quot;).ToString]" in_TimeoutSec="[Cint(in_Config(&quot;CMSTimeout_1&quot;).ToString)]" in_VerificationSec="[Cint(in_Config(&quot;CMSTimeout_4&quot;).ToString)]" />
+    <hwc:WebCMS_HCADEvidence DisplayName="WebCMS_HCAD Evidence" sap:VirtualizedContainerService.HintSize="586,492.6666666666667" sap2010:WorkflowViewState.IdRef="WebCMS_HCADEvidence_1" in_DeliveryMethodArbit="[in_TransactionItem.SpecificContent(&quot;DeliveryMethod&quot;).ToString]" in_DeliveryMethodOwner="[in_TransactionItem.SpecificContent(&quot;DeliveryMethod&quot;).ToString]" in_EvidenceDueDate="[CDate(in_TransactionItem.SpecificContent(&quot;HcadEvidenceDeadline&quot;)).ToString(&quot;MM/dd/yy&quot;)]" in_EvidenceNumber="[in_TransactionItem.SpecificContent(&quot;RBAENumber&quot;).ToString.replace(&quot;-&quot;,&quot;&quot;)]" in_LowTimeoutSec="[Cint(in_Config(&quot;CMSTimeout_3&quot;).ToString)]" in_ScreenshotFolder="[in_Config(&quot;ScreenShotFolder&quot;).ToString]" in_TimeoutSec="[Cint(in_Config(&quot;CMSTimeout_1&quot;).ToString)]" in_VerificationSec="[Cint(in_Config(&quot;CMSTimeout_4&quot;).ToString)]" />
+    <hwc:WebCMS_FilerHearingEvidence DisplayName="WebCMS_FilerHearing Evidence" sap:VirtualizedContainerService.HintSize="586,387.3333333333333" sap2010:WorkflowViewState.IdRef="WebCMS_FilerHearingEvidence_1" in_EvidenceDueDate="[CDate(in_TransactionItem.SpecificContent(&quot;OwnerAgentEvidenceDeadline&quot;)).ToString(&quot;MM/dd/yy&quot;)]" in_EvidenceNumber="[in_TransactionItem.SpecificContent(&quot;RBAENumber&quot;).ToString.replace(&quot;-&quot;,&quot;&quot;)]" in_LowTimeoutSec="[Cint(in_Config(&quot;CMSTimeout_3&quot;).ToString)]" in_ScreenshotFolder="[in_Config(&quot;ScreenShotFolder&quot;).ToString]" in_TimeoutSec="[Cint(in_Config(&quot;CMSTimeout_1&quot;).ToString)]" in_VerificationSec="[Cint(in_Config(&quot;CMSTimeout_4&quot;).ToString)]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </hwc:WebCMS_FilerHearingEvidence>
+    <hwc:WebCMS_HCADRebuttalEvidence DisplayName="WebCMS_HCADRebuttal Evidence" sap:VirtualizedContainerService.HintSize="586,492.6666666666667" sap2010:WorkflowViewState.IdRef="WebCMS_HCADRebuttalEvidence_1" in_DeliveryMethodArbit="[in_TransactionItem.SpecificContent(&quot;DeliveryMethod&quot;).ToString]" in_DeliveryMethodOwner="[in_TransactionItem.SpecificContent(&quot;DeliveryMethod&quot;).ToString]" in_EvidenceDueDate="[CDate(in_TransactionItem.SpecificContent(&quot;RebuttalEvidenceDeadline&quot;)).ToString(&quot;MM/dd/yy&quot;)]" in_EvidenceNumber="[in_TransactionItem.SpecificContent(&quot;RBAENumber&quot;).ToString.replace(&quot;-&quot;,&quot;&quot;)]" in_LowTimeoutSec="[Cint(in_Config(&quot;CMSTimeout_3&quot;).ToString)]" in_ScreenshotFolder="[in_Config(&quot;ScreenShotFolder&quot;).ToString]" in_TimeoutSec="[Cint(in_Config(&quot;CMSTimeout_1&quot;).ToString)]" in_VerificationSec="[Cint(in_Config(&quot;CMSTimeout_4&quot;).ToString)]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </hwc:WebCMS_HCADRebuttalEvidence>
+    <hwc:WebCMS_FilerRebuttalEvidence DisplayName="WebCMS_FilerRebuttal Evidence" sap:VirtualizedContainerService.HintSize="586,378" sap2010:WorkflowViewState.IdRef="WebCMS_FilerRebuttalEvidence_1" in_EvidenceDueDate="[CDate(in_TransactionItem.SpecificContent(&quot;RebuttalEvidenceDeadline&quot;)).ToString(&quot;MM/dd/yy&quot;)]" in_EvidenceNumber="[in_TransactionItem.SpecificContent(&quot;RBAENumber&quot;).ToString.replace(&quot;-&quot;,&quot;&quot;)]" in_LowTimeoutSec="[Cint(in_Config(&quot;CMSTimeout_3&quot;).ToString)]" in_ScreenshotFolder="[in_Config(&quot;ScreenShotFolder&quot;).ToString]" in_TimeoutSec="[Cint(in_Config(&quot;CMSTimeout_1&quot;).ToString)]" in_VerificationSec="[Cint(in_Config(&quot;CMSTimeout_4&quot;).ToString)]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </hwc:WebCMS_FilerRebuttalEvidence>
+  </Sequence>
+</Activity>
