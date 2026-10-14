@@ -118,7 +118,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log message (close applications)" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Closing applications...&quot;]" />
-    <hwl:WebCMS_Logout sap:VirtualizedContainerService.HintSize="416,282" sap2010:WorkflowViewState.IdRef="WebCMS_Logout_1" in_LowTimeoutSec="[Cint(in_Config(&quot;CMSTimeout_2&quot;).ToString)]" in_ScreenshotFolder="[in_Config(&quot;ScreenShotFolder&quot;).ToString.Replace(&quot;{username}&quot;, Environment.UserName)]" in_TimeoutSec="[Cint(in_Config(&quot;CMSTimeout_1&quot;).ToString)]" in_VerificationSec="[Cint(in_Config(&quot;CMSTimeout_3&quot;).ToString)]" />
+    <hwl:WebCMS_Logout DisplayName="Web CMS_Logout" sap:VirtualizedContainerService.HintSize="416,282" sap2010:WorkflowViewState.IdRef="WebCMS_Logout_1" in_LowTimeoutSec="[Cint(in_Config(&quot;CMSTimeout_2&quot;).ToString)]" in_ScreenshotFolder="[in_Config(&quot;ScreenShotFolder&quot;).ToString.Replace(&quot;{username}&quot;, Environment.UserName)]" in_TimeoutSec="[Cint(in_Config(&quot;CMSTimeout_1&quot;).ToString)]" in_VerificationSec="[Cint(in_Config(&quot;CMSTimeout_3&quot;).ToString)]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="CloseOpenDBConnections - Invoke Workflow File (DataBase\CloseOpenDBConnections.xaml)" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="DataBase\CloseOpenDBConnections.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbConnectionReporting" />

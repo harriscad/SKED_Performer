@@ -126,7 +126,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="870.6666666666666,823.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="870.6666666666666,766" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -134,29 +134,6 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
-    <hwl:WebCMS_Login sap:VirtualizedContainerService.HintSize="416,545.3333333333334" sap2010:WorkflowViewState.IdRef="WebCMS_Login_2" in_ApplicationURL="[in_Config(&quot;CMSURL&quot;).ToString]" in_CredentialAssetName="[in_Config(&quot;CMSCreds&quot;).ToString]" in_Environment="[in_Config(&quot;CMSEnviornment&quot;).ToString]" in_LoginRetry="[Cint(in_Config(&quot;LoginRetry&quot;).ToString)]" in_LowTimeoutSec="[Cint(in_Config(&quot;CMSTimeout_2&quot;).ToString)]" in_OrchestratorFolder="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" in_ScreenshotFolder="[in_Config(&quot;ScreenShotFolder&quot;).ToString.Replace(&quot;{username}&quot;, Environment.UserName)]" in_TimeoutSec="[Cint(in_Config(&quot;CMSTimeout_1&quot;).ToString)]" in_VerificationSec="[Cint(in_Config(&quot;CMSTimeout_3&quot;).ToString)]" />
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,228" sap2010:WorkflowViewState.IdRef="Sequence_10">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="LoginToCMS - Invoke Workflow File (CMS\LoginToCMS.xaml)" sap:VirtualizedContainerService.HintSize="382,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="CMS\LoginToCMS.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_CMSURL">[in_Config("CMSURL").ToString]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_CMSCredentials">[in_Config("CMSCreds").ToString]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-        </Sequence>
-      </ui:CommentOut.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:CommentOut>
+    <hwl:WebCMS_Login DisplayName="Web CMS_Login" sap:VirtualizedContainerService.HintSize="416,536" sap2010:WorkflowViewState.IdRef="WebCMS_Login_2" in_ApplicationURL="[in_Config(&quot;CMSURL&quot;).ToString]" in_CredentialAssetName="[in_Config(&quot;CMSCreds&quot;).ToString]" in_Environment="[in_Config(&quot;CMSEnviornment&quot;).ToString]" in_LoginRetry="[Cint(in_Config(&quot;LoginRetry&quot;).ToString)]" in_LowTimeoutSec="[Cint(in_Config(&quot;CMSTimeout_2&quot;).ToString)]" in_OrchestratorFolder="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" in_ScreenshotFolder="[in_Config(&quot;ScreenShotFolder&quot;).ToString.Replace(&quot;{username}&quot;, Environment.UserName)]" in_TimeoutSec="[Cint(in_Config(&quot;CMSTimeout_1&quot;).ToString)]" in_VerificationSec="[Cint(in_Config(&quot;CMSTimeout_3&quot;).ToString)]" />
   </Sequence>
 </Activity>
